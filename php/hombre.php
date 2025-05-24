@@ -138,6 +138,7 @@ while ($row = $resultado->fetch_assoc()) {
         </div>
       </div>
     </section>
+    <?php include "cardLogin.php" ?>
     <!-- Footer -->
     <footer class="bg-dark text-white pt-5 pb-3 mt-5">
       <div class="container">
@@ -170,7 +171,9 @@ while ($row = $resultado->fetch_assoc()) {
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="../js/index.js"></script>
+
+  </body>
 </html>
 
 <?php $conn->close(); ?>
