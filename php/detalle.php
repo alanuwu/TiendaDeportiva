@@ -54,6 +54,8 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
             flex-direction: column;
             min-height: 100vh;
         }
+        .navbar-brand span { color: #0d6efd; }
+        .carousel-caption { background: rgba(0,0,0,0.45); border-radius: 1rem; }
 
         main {
             flex: 1;
@@ -69,25 +71,26 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Tienda<span> Deportiva</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link <?php echo $categoria == 'inicio' ? 'active' : ''; ?>" href="../index.php">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo $categoria == 'hombres' ? 'active' : ''; ?>" <?php if ($categoria == 'hombres') echo 'aria-current="page"'; ?> href="hombre.php">Hombres</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo $categoria == 'mujeres' ? 'active' : ''; ?>" <?php if ($categoria == 'mujeres') echo 'aria-current="page"'; ?> href="mujer.php">Mujeres</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo $categoria == 'niños' ? 'active" aria-current="page"' : ''; ?>" href="nino.php">Niños</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo $categoria == 'marcas' ? 'active' : ''; ?>" href="marcas.php">Marcas</a></li>
-                </ul>
-                <div class="d-flex gap-3">
-                    <a href="#" class="text-white"><i class="fa-regular fa-user fa-lg"></i></a>
-                    <a href="#" class="text-white"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
-                </div>
-            </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">Tienda<span> Deportiva</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" 
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="hombre.php">Hombres</a></li>
+            <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
+            <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
+            <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
+          </ul>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white"><i class="fa-regular fa-user fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+          </div>
         </div>
+      </div>
     </nav>
 
     <main class="container my-5">
