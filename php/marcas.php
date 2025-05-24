@@ -30,8 +30,8 @@
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="hombres.php">Hombres</a></li>
-            <li class="nav-item"><a class="nav-link" href="mujeres.php">Mujeres</a></li>
+            <li class="nav-item"><a class="nav-link" href="hombre.php">Hombres</a></li>
+            <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
             <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link active" href="marcas.php">Marcas</a></li>
           </ul>

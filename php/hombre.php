@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT nombre, precio, imagen_url FROM productos WHERE id_categoria = 1 LIMIT 8";
+$sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_categoria = 1 LIMIT 8";
 $resultado = $conn->query($sql);
 ?>
 
@@ -10,7 +10,7 @@ $resultado = $conn->query($sql);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Productos para Mujeres - Tienda Deportiva</title>
+    <title>Productos para Hombres - Tienda Deportiva</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -38,8 +38,8 @@ $resultado = $conn->query($sql);
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="hombres.php">Hombres</a></li>
-            <li class="nav-item"><a class="nav-link" href="mujeres.php">Mujeres</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="hombre.php">Hombres</a></li>
+            <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
             <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
           </ul>
@@ -94,28 +94,29 @@ $resultado = $conn->query($sql);
       </button>
     </div>
 
-    <!-- Productos para Hombre -->
+    <!-- Productos para Hombres -->
     <section class="container mb-5">
       <h2 class="text-center fw-bold mb-4">Productos para Hombres</h2>
       <div class="row g-4 justify-content-center">
         <?php
-        while ($row = $resultado->fetch_assoc()) {
-            $nombre = $row["nombre"];
-            $precio = $row["precio"];
-            $imagen = !empty($row["imagen_url"]) ? $row["imagen_url"] : "https://via.placeholder.com/400";
+while ($row = $resultado->fetch_assoc()) {
+    $id_producto = $row["id_producto"];
+    $nombre = $row["nombre"];
+    $precio = $row["precio"];
+    $imagen = !empty($row["imagen_url"]) ? $row["imagen_url"] : "https://via.placeholder.com/400";
 
-            echo '
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div class="card product-card h-100 shadow border-0">
-                <img src="' . $imagen . '" alt="' . htmlspecialchars($nombre) . '" class="card-img-top product-image" />
-                <div class="card-body text-center">
-                  <h5 class="card-title fw-bold">' . htmlspecialchars($nombre) . '</h5>
-                  <p class="card-text text-primary fw-bold">$' . $precio . ' MXN</p>
-                  <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-                </div>
-              </div>
-            </div>';
-        }
+    echo '
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card product-card h-100 shadow border-0">
+        <img src="' . $imagen . '" class="card-img-top" alt="' . htmlspecialchars($nombre) . '" style="height:180px;object-fit:cover;">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">' . htmlspecialchars($nombre) . '</h5>
+          <p class="card-text text-primary fw-bold">$' . $precio . ' MXN</p>
+          <a href="detalle.php?id=' . $id_producto . '" class="btn btn-outline-primary w-100">Ver más</a>
+        </div>
+      </div>
+    </div>';
+}
         ?>
       </div>
     </section>
