@@ -1,4 +1,17 @@
-<?php include "config.php"?>
+<?php
+include "config.php";
+
+// Obtener todas las marcas de la base de datos
+$marcas = [];
+$sqlMarcas = "SELECT id_marca, nombre FROM marcas ORDER BY nombre";
+$resMarcas = $conn->query($sqlMarcas);
+while ($row = $resMarcas->fetch_assoc()) {
+    $marcas[$row['id_marca']] = $row['nombre'];
+}
+
+// Marca seleccionada
+$marca = isset($_GET['marca']) ? intval($_GET['marca']) : (count($marcas) ? array_key_first($marcas) : 1);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -83,95 +96,51 @@
         <span class="visually-hidden">Siguiente</span>
       </button>
     </div>
+<div class="container mb-3">
+  <div class="row justify-content-end">
+    <div class="col-auto">
+      <form method="get" id="formFiltroMarca">
+        <select id="filtroMarca" name="marca" class="form-select" onchange="document.getElementById('formFiltroMarca').submit()">
+          <?php foreach($marcas as $id => $nombre): ?>
+            <option value="<?php echo $id; ?>" <?php if($marca == $id) echo 'selected'; ?>>
+              <?php echo htmlspecialchars($nombre); ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
 
-    <!-- Productos destacados Bootstrap -->
-     <!-- Productos destacados Bootstrap -->
-    <section class="container mb-5">
-      <h2 class="text-center fw-bold mb-4">Productos Destacados</h2>
-      <div class="row g-4 justify-content-center">
+<!-- Productos destacados Bootstrap -->
+<section class="container mb-5">
+  <h2 class="text-center fw-bold mb-4">
+    Productos <?php echo isset($marcas[$marca]) ? htmlspecialchars($marcas[$marca]) : ''; ?>
+  </h2>
+  <div class="row g-4 justify-content-center">
+    <?php
+    $sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_marca = $marca LIMIT 8";
+    $resultado = $conn->query($sql);
+    while ($row = $resultado->fetch_assoc()) {
+        $id_producto = $row["id_producto"];
+        $nombre = $row["nombre"];
+        $precio = $row["precio"];
+        $imagen = !empty($row["imagen_url"]) ? $row["imagen_url"] : "https://via.placeholder.com/400";
+        echo '
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <div class="card product-card h-100 shadow border-0">
-            <img src="https://b2cimpulsmx.vtexassets.com/arquivos/ids/358759-800-800?v=638709166850700000&width=800&height=800&aspect=true" class="card-img-top" alt="Tenis Adidas" style="height:180px;object-fit:cover;">
+            <img src="' . $imagen . '" class="card-img-top" alt="' . htmlspecialchars($nombre) . '" style="height:180px;object-fit:cover;">
             <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Tenis Adidas</h5>
-              <p class="card-text text-primary fw-bold">$1,299 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
+              <h5 class="card-title fw-bold">' . htmlspecialchars($nombre) . '</h5>
+              <p class="card-text text-primary fw-bold">$' . $precio . ' MXN</p>
+              <a href="detalle.php?id=' . $id_producto . '" class="btn btn-outline-primary w-100">Ver más</a>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1526178613658-3f1622045557?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Playera Puma" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Playera Puma</h5>
-              <p class="card-text text-primary fw-bold">$499 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Balón Nike" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Balón Nike</h5>
-              <p class="card-text text-primary fw-bold">$399 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Gorra Under Armour" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Gorra Under Armour</h5>
-              <p class="card-text text-primary fw-bold">$299 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Sudadera Nike" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Sudadera Nike</h5>
-              <p class="card-text text-primary fw-bold">$899 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Short Adidas" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Short Adidas</h5>
-              <p class="card-text text-primary fw-bold">$349 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Mochila Puma" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Mochila Puma</h5>
-              <p class="card-text text-primary fw-bold">$599 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card product-card h-100 shadow border-0">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Calcetas Under Armour" style="height:180px;object-fit:cover;">
-            <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Calcetas Under Armour</h5>
-              <p class="card-text text-primary fw-bold">$149 MXN</p>
-              <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+        </div>';
+    }
+    ?>
+  </div>
+</section>
     <!-- Sección de Marcas -->
     <section class="container mb-5">
       <h2 class="text-center fw-bold mb-4">Nuestras Marcas</h2>
