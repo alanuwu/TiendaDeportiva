@@ -23,7 +23,7 @@
     <!-- Barra de navegación Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Tienda<span>Deportiva</span></a>
+        <a class="navbar-brand fw-bold" href="../index.php">Tienda<span>Deportiva</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
