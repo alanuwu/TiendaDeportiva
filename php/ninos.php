@@ -44,9 +44,8 @@ $resultado = $conn->query($sql);
             <li class="nav-item"><a class="nav-link active" aria-current="page">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
           </ul>
-          <div class="d-flex gap-3">
-            <a href="#" class="text-white"><i class="fa-regular fa-user fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+         <div class="d-flex gap-3" id="userNavArea">
+            <!-- Aquí se insertará dinámicamente el icono o el botón -->
           </div>
         </div>
       </div>
@@ -140,6 +139,53 @@ while ($row = $resultado->fetch_assoc()) {
         </div>
       </div>
     </section>
+
+<!-- Modal de Login Bootstrap -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="loginModalLabel"><i class="fa-regular fa-user me-2"></i>Iniciar Sesión</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <form action="php/login.php" method="POST" autocomplete="off">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="loginEmail" name="email" required autofocus>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="loginPassword" name="password" required>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <a href="#" class="small text-decoration-none">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Información del Usuario -->
+<div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="userInfoModalLabel"><i class="fa-regular fa-user me-2"></i>Mi Perfil</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div id="userInfoContent">
+          <!-- Aquí se mostrarán los datos del usuario -->
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
     <!-- Footer -->
     <footer class="bg-dark text-white pt-5 pb-3 mt-5">
       <div class="container">
@@ -172,6 +218,7 @@ while ($row = $resultado->fetch_assoc()) {
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>
 

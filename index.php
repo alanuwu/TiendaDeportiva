@@ -35,11 +35,11 @@
             <li class="nav-item"><a class="nav-link" href="php/ninos.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="php/marcas.php">Marcas</a></li>
           </ul>
-          <div class="d-flex gap-3">
-            <a href="#" class="text-white"><i class="fa-regular fa-user fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+          <div class="d-flex gap-3" id="userNavArea">
+            <!-- Aquí se insertará dinámicamente el icono o el botón -->
           </div>
         </div>
+        
       </div>
     </nav>
 
@@ -107,6 +107,10 @@
       </div>
     </section>
 
+  
+
+<?php include "php/cardLogin.php" ?>
+
     <footer class="bg-dark text-white pt-5 pb-3 mt-5">
       <div class="container">
         <div class="row gy-4">
@@ -153,5 +157,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="./js/index.js"></script>
 </body>
 </html>
