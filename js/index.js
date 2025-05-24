@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
       let html = `
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong>ID:</strong> ${usuario.id_usuario ?? ''}</li>
+          <li class="list-group-item"><strong>Nombre:</strong> ${usuario.nombre ?? ''}</li>
           <li class="list-group-item"><strong>Correo:</strong> ${usuario.correo ?? ''}</li>
+          <li class="list-group-item"><strong>Numero Telefonico:</strong> ${usuario.telefono ?? ''}</li>
         </ul>
         <div class="mt-3 text-end">
           <button type="button" class="btn btn-danger btn-cerrar-sesion">Cerrar Sesión</button>

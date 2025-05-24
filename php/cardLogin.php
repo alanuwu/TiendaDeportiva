@@ -6,7 +6,7 @@
         <h5 class="modal-title" id="loginModalLabel"><i class="fa-regular fa-user me-2"></i>Iniciar Sesión</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <form action="php/login.php" method="POST" autocomplete="off">
+      <form action="login.php" method="POST" autocomplete="off">
         <div class="modal-body">
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Correo electrónico</label>

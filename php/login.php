@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     // Busca el usuario por correo
-    $query = "SELECT id_usuario, correo, contraseña FROM usuarios WHERE correo = '$correo' LIMIT 1";
+    $query = "SELECT id_usuario, nombre , correo, contraseña , telefono FROM usuarios WHERE correo = '$correo' LIMIT 1";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) === 1) {
@@ -16,12 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $usuario['contraseña']) || $password === $usuario['contraseña']) {
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['correo'] = $usuario['correo'];
+             $_SESSION['nombre'] = $usuario['nombre'];
+             $_SESSION['telefono'] = $usuario['telefono'];
             // Guardar usuario en localStorage y redirigir
             ?>
             <script>
                 localStorage.setItem('usuario', JSON.stringify({
                     id_usuario: "<?php echo $usuario['id_usuario']; ?>",
-                    correo: "<?php echo $usuario['correo']; ?>"
+                    correo: "<?php echo $usuario['correo']; ?>",
+                     nombre: "<?php echo $usuario['nombre']; ?>",
+                       telefono: "<?php echo $usuario['telefono']; ?>"
                 }));
                 window.location.href = "../index.php";
             </script>
