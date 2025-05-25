@@ -103,7 +103,15 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
                 <h1><?php echo htmlspecialchars($producto['nombre']); ?></h1>
                 <h3 class="text-primary">$<?php echo $producto['precio']; ?> MXN</h3>
                 <p><?php echo nl2br(htmlspecialchars($producto['descripcion'] ?? "Sin descripción disponible.")); ?></p>
-                <button class="btn btn-primary btn-lg">Agregar al carrito</button>
+                <button 
+                  class="btn btn-primary btn-add-cart w-100"
+                  data-id="<?= $id ?>"
+                  data-nombre="<?= htmlspecialchars($producto['nombre']) ?>"
+                  data-precio="<?= $producto['precio'] ?>"
+                  data-imagen="<?= $producto['imagen_url'] ?>"
+                >
+                  <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
             </div>
         </div>
     </main>

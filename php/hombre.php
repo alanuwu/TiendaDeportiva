@@ -111,7 +111,7 @@ while ($row = $resultado->fetch_assoc()) {
         <div class="card-body text-center">
           <h5 class="card-title fw-bold">' . htmlspecialchars($nombre) . '</h5>
           <p class="card-text text-primary fw-bold">$' . $precio . ' MXN</p>
-          <a href="detalle.php?id=' . $id_producto . '" class="btn btn-outline-primary w-100">Ver más</a>
+          <a href="detalle.php?id=' . $id_producto . '" class="btn btn-outline-primary w-100">Ver más</a>         
         </div>
       </div>
     </div>';
@@ -177,3 +177,20 @@ while ($row = $resultado->fetch_assoc()) {
 </html>
 
 <?php $conn->close(); ?>
+
+<!-- Modal Carrito de Compras -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="cartModalLabel"><i class="fa-solid fa-cart-shopping me-2"></i>Carrito de Compras</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div id="cartContent">
+          <!-- Aquí se mostrarán los productos del carrito -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

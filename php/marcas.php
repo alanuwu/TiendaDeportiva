@@ -50,6 +50,9 @@ $marca = isset($_GET['marca']) ? intval($_GET['marca']) : (count($marcas) ? arra
           </ul>
           <div class="d-flex gap-3" id="userNavArea">
             <!-- Aquí se insertará dinámicamente el icono o el botón -->
+            <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#cartModal">
+              <i class="fa-solid fa-cart-shopping fa-lg"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -212,3 +215,20 @@ $marca = isset($_GET['marca']) ? intval($_GET['marca']) : (count($marcas) ? arra
   </body>
 
 </html>
+
+<!-- Modal Carrito de Compras -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="cartModalLabel"><i class="fa-solid fa-cart-shopping me-2"></i>Carrito de Compras</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div id="cartContent">
+          <!-- Aquí se mostrarán los productos del carrito -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
