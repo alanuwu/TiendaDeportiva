@@ -79,7 +79,7 @@ $marca = isset($_GET['marca']) ? intval($_GET['marca']) : (count($marcas) ? arra
         </div>
         
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=900&q=80" class="d-block w-100" alt="Producto 3" style="height:340px;object-fit:cover;">
+          <img src="https://img.freepik.com/foto-gratis/arreglo-deportivo-naturaleza-muerta_23-2149006363.jpg?semt=ais_hybrid&w=740" class="d-block w-100" alt="Producto 3" style="height:340px;object-fit:cover;">
           <div class="carousel-caption d-none d-md-block p-4">
             <h2 class="fw-bold">Accesorios Exclusivos</h2>
             <p>Todo lo que necesitas para tu deporte favorito</p>
