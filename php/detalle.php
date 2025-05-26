@@ -1,5 +1,5 @@
 <?php
-include "config.php"; // conexión
+include "config.php";
 
 // Verificar que se envió el parámetro id
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -9,7 +9,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// Consulta que obtiene el producto y su categoría
+//  producto y su categoría
 $sql = "
     SELECT 
         p.nombre, 
@@ -32,7 +32,33 @@ if ($resultado->num_rows === 0) {
 }
 
 $producto = $resultado->fetch_assoc();
-$categoria = strtolower($producto['categoria']); // Para comparaciones consistentes
+$categoria = strtolower($producto['categoria']);
+
+// tallas  
+$sql_tallas = "SELECT talla FROM talla_productos WHERE id_producto = ?";
+$stmt_tallas = $conn->prepare($sql_tallas);
+$stmt_tallas->bind_param("i", $id);
+$stmt_tallas->execute();
+$res_tallas = $stmt_tallas->get_result();
+$tallas = [];
+while ($row = $res_tallas->fetch_assoc()) {
+    $tallas[] = $row['talla'];
+}
+
+//  reseñas 
+$sql_resenas = "SELECT u.nombre AS usuario, r.comentario, r.calificacion, r.fecha
+                FROM resenas r
+                JOIN usuarios u ON r.id_usuario = u.id_usuario
+                WHERE r.id_producto = ?
+                ORDER BY r.fecha DESC";
+$stmt_resenas = $conn->prepare($sql_resenas);
+$stmt_resenas->bind_param("i", $id);
+$stmt_resenas->execute();
+$res_resenas = $stmt_resenas->get_result();
+$resenas = [];
+while ($row = $res_resenas->fetch_assoc()) {
+    $resenas[] = $row;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,8 +80,15 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
             flex-direction: column;
             min-height: 100vh;
         }
-        .navbar-brand span { color: #0d6efd; }
-        .carousel-caption { background: rgba(0,0,0,0.45); border-radius: 1rem; }
+
+        .navbar-brand span {
+            color: #0d6efd;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 1rem;
+        }
 
         main {
             flex: 1;
@@ -86,7 +119,7 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
           </ul>
          <div class="d-flex gap-3" id="userNavArea">
-            <!-- Aquí se insertará dinámicamente el icono o el botón -->
+
           </div>
         </div>
       </div>
@@ -94,7 +127,6 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
 
     <main class="container my-5">
         <a href="<?php echo $categoria . '.php'; ?>" class="btn btn-secondary mb-4">← Regresar</a>
-
         <div class="row">
             <div class="col-md-6">
                 <img src="<?php echo !empty($producto['imagen_url']) ? $producto['imagen_url'] : 'https://via.placeholder.com/600'; ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>" class="img-fluid rounded shadow" />
@@ -103,16 +135,106 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
                 <h1><?php echo htmlspecialchars($producto['nombre']); ?></h1>
                 <h3 class="text-primary">$<?php echo $producto['precio']; ?> MXN</h3>
                 <p><?php echo nl2br(htmlspecialchars($producto['descripcion'] ?? "Sin descripción disponible.")); ?></p>
+                <?php if (count($tallas) > 0): ?>
+                    <div class="mb-3">
+                        <label for="select-talla" class="form-label fw-bold">Talla:</label>
+                        <select id="select-talla" class="form-select mb-2">
+                            <?php foreach ($tallas as $talla): ?>
+                                <option value="<?= htmlspecialchars($talla) ?>"><?= htmlspecialchars($talla) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                <?php endif; ?>
                 <button 
                   class="btn btn-primary btn-add-cart w-100"
                   data-id="<?= $id ?>"
                   data-nombre="<?= htmlspecialchars($producto['nombre']) ?>"
                   data-precio="<?= $producto['precio'] ?>"
                   data-imagen="<?= $producto['imagen_url'] ?>"
+                  <?php if (count($tallas) > 0): ?>
+                    data-talla=""
+                  <?php endif; ?>
+                  id="btnAddCart"
                 >
                   <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                 </button>
             </div>
+        </div>
+
+        <!-- Reseñas -->
+        <div class="mt-5">
+            <div class="d-flex align-items-center mb-3">
+                <h4 class="fw-bold mb-0 me-3">Reseñas</h4>
+                <?php
+                $promedio = 0;
+                if (count($resenas) > 0) {
+                    $suma = 0;
+                    foreach ($resenas as $r) {
+                        $suma += $r['calificacion'];
+                    }
+                    $promedio = $suma / count($resenas);
+                }
+                ?>
+                <?php if (count($resenas) > 0): ?>
+                    <span class="d-flex align-items-center">
+                        <?php
+                        $rounded = round($promedio * 2) / 2; // redondea a 0.5
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($rounded >= $i) {
+                                echo '<i class="fa-solid fa-star text-warning" style="font-size:1.7rem;"></i>';
+                            } elseif ($rounded >= $i - 0.5) {
+                                echo '<i class="fa-solid fa-star-half-stroke text-warning" style="font-size:1.7rem;"></i>';
+                            } else {
+                                echo '<i class="fa-regular fa-star text-secondary" style="font-size:1.7rem;"></i>';
+                            }
+                        }
+                        ?>
+                        <span class="ms-2 fw-bold" style="font-size:1.2rem;">
+                            <?= number_format($promedio, 1) ?>
+                        </span>
+                    </span>
+                <?php else: ?>
+                    <span class="text-muted ms-2">Sin calificaciones</span>
+                <?php endif; ?>
+            </div>
+            <?php if (count($resenas) > 0): ?>
+                <?php $primera = $resenas[0]; ?>
+                <div class="border rounded p-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="fw-bold"><?= htmlspecialchars($primera['usuario']) ?></span>
+                        <span>
+                            <?php for ($i = 0; $i < 5; $i++): ?>
+                                <i class="fa-star<?= $i < $primera['calificacion'] ? ' fa-solid text-warning' : ' fa-regular text-secondary' ?>" style="font-size: 1.5rem;"></i>
+                            <?php endfor; ?>
+                        </span>
+                    </div>
+                    <div class="text-muted small mb-1"><?= date('d/m/Y', strtotime($primera['fecha'])) ?></div>
+                    <div><?= nl2br(htmlspecialchars($primera['comentario'])) ?></div>
+                </div>
+                <?php if (count($resenas) > 1): ?>
+                    <button class="btn btn-link p-0 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseResenas" aria-expanded="false" aria-controls="collapseResenas">
+                        Ver todas las reseñas (<?= count($resenas) ?>)
+                    </button>
+                    <div class="collapse" id="collapseResenas">
+                        <?php foreach (array_slice($resenas, 1) as $resena): ?>
+                            <div class="border rounded p-3 mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="fw-bold"><?= htmlspecialchars($resena['usuario']) ?></span>
+                                    <span>
+                                        <?php for ($i = 0; $i < 5; $i++): ?>
+                                            <i class="fa-star<?= $i < $resena['calificacion'] ? ' fa-solid text-warning' : ' fa-regular text-secondary' ?>" style="font-size: 1.5rem;"></i>
+                                        <?php endfor; ?>
+                                    </span>
+                                </div>
+                                <div class="text-muted small mb-1"><?= date('d/m/Y', strtotime($resena['fecha'])) ?></div>
+                                <div><?= nl2br(htmlspecialchars($resena['comentario'])) ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            <?php else: ?>
+                <div class="alert alert-info">Este producto aún no tiene reseñas.</div>
+            <?php endif; ?>
         </div>
     </main>
 
@@ -144,10 +266,21 @@ $categoria = strtolower($producto['categoria']); // Para comparaciones consisten
             </div>
         </div>
     </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/index.js"></script>
-
+    <script>
+    // Si hay select de talla, agrega la talla seleccionada al botón antes de agregar al carrito
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectTalla = document.getElementById('select-talla');
+        const btnAddCart = document.getElementById('btnAddCart');
+        if (selectTalla && btnAddCart) {
+            btnAddCart.setAttribute('data-talla', selectTalla.value);
+            selectTalla.addEventListener('change', function() {
+                btnAddCart.setAttribute('data-talla', this.value);
+            });
+        }
+    });
+    </script>
 </body>
 
 </html>

@@ -14,10 +14,13 @@ function renderUserNav() {
       </a>
     `;
   } else {
-    // Si no existe usuario, muestra el botón de iniciar sesión y el carrito
+    // Si no existe usuario, muestra el botón de iniciar sesión, registrarse y el carrito
     userNav.innerHTML = `
       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
         <i class="fa-regular fa-user"></i> Iniciar Sesión
+      </button>
+       <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+       <i class="fa-solid fa-user-plus"></i>Registrarse
       </button>
       <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#cartModal">
         <i class="fa-solid fa-cart-shopping fa-lg"></i>
@@ -60,7 +63,35 @@ function renderCart() {
       <span class="fw-bold text-primary fs-5">$${total.toFixed(2)} MXN</span>
     </div>
   `;
+
+  // Mostrar botón de comprar solo si hay usuario
+  const usuario = localStorage.getItem('usuario');
+  if (usuario) {
+    cartContent.innerHTML += `
+      <div class="mt-4 text-end">
+        <button class="btn btn-success w-100" id="btnComprar">Comprar</button>
+      </div>
+    `;
+  } else {
+    cartContent.innerHTML += `
+      <div class="mt-4 text-center">
+        <span class="text-danger fw-bold">Por favor inicia sesión para continuar con la compra.</span>
+      </div>
+    `;
+  }
 }
+
+// Evento para redirigir a pago.php con los productos seleccionados
+document.body.addEventListener('click', function(e) {
+  const btnComprar = e.target.closest('#btnComprar');
+  if (btnComprar) {
+    const cart = getCart();
+    // Guarda el carrito en localStorage (ya está guardado, pero lo aseguramos)
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // Redirige a la página de pago
+    window.location.href = "pago.php";
+  }
+});
 
 // Ejecuta al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -89,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li class="list-group-item"><strong>Numero Telefonico:</strong> ${usuario.telefono ?? ''}</li>
         </ul>
         <div class="mt-3 text-end">
+          <button type="button" class="btn btn-submit btn-ver-pedidos">Mis Pedidos</button>
           <button type="button" class="btn btn-danger btn-cerrar-sesion">Cerrar Sesión</button>
         </div>
       `;
@@ -144,3 +176,16 @@ document.addEventListener('DOMContentLoaded', function() {
     cartModal.addEventListener('show.bs.modal', renderCart);
   }
 });
+
+// Evento para redirigir a verpedidos.php
+document.body.addEventListener('click', function(e) {
+  if (e.target.closest('.btn-ver-pedidos')) {
+    window.location.href = "php/verpedidos.php";
+  }
+});
+
+// Función para abrir el modal de registro desde JS
+
+
+// Puedes llamarla así donde la necesites:
+// abrirModalRegistro();

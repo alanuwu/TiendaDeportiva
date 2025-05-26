@@ -112,6 +112,7 @@ while ($row = $resultado->fetch_assoc()) {
         <div class="card-body text-center">
           <h5 class="card-title fw-bold">' . htmlspecialchars($nombre) . '</h5>
           <p class="card-text text-primary fw-bold">$' . $precio . ' MXN</p>
+           <a href="detalle.php?id=' . $id_producto . '" class="btn btn-outline-primary w-100">Ver más</a>
           
         </div>
       </div>
