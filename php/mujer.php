@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_categoria = 2 LIMIT 8";
+$sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_categoria = 2";
 $resultado = $conn->query($sql);
 ?>
 

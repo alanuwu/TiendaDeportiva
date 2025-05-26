@@ -2,7 +2,7 @@
 include 'config.php';
 
 // Se cambio el id a 3, ya tenemos productos de ninos, ejecuten las sentencias del txt
-$sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_categoria = 3 LIMIT 8";
+$sql = "SELECT id_producto, nombre, precio, imagen_url FROM productos WHERE id_categoria = 3";
 $resultado = $conn->query($sql);
 ?>
 
