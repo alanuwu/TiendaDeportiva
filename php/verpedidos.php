@@ -21,7 +21,7 @@ $resPedidos = $conn->query($sqlPedidos);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mis Pedidos - Tienda Deportiva</title>
+    <title>Mis Pedidos - ALI Sports</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Google Fonts -->

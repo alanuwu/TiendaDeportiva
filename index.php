@@ -202,6 +202,46 @@
   </div>
 </div>
 
+
+
+<!-- Modal de Registro Bootstrap -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="registerModalLabel"><i class="fa-regular fa-user me-2"></i>Crear Cuenta</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <form action="php/sign-in.php" method="POST" autocomplete="off">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="registerNombre" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="registerNombre" name="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="registerEmail" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerTelefono" class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="registerTelefono" name="telefono" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="registerPassword" name="password" required>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <a href="#" class="small text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">¿Ya tienes cuenta? Inicia sesión</a>
+          <button type="submit" class="btn btn-success">Registrarme</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Modal de Información del Usuario -->
 <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -241,7 +281,7 @@
         <div class="row gy-4">
           <!-- Logo y descripción -->
           <div class="col-12 col-md-4 text-center text-md-start">
-            <a class="navbar-brand fw-bold text-white mb-2 d-inline-block" href="#" style="font-size:1.5rem;">Tienda<span style="color:#0d6efd;">Deportiva</span></a>
+            <a class="navbar-brand fw-bold text-white mb-2 d-inline-block" href="#" style="font-size:1.5rem;">ALI<span style="color:#0d6efd;">Sports</span></a>
             <p class="small mt-2 mb-0">
               Tu tienda de confianza para ropa, calzado y accesorios deportivos de las mejores marcas.
             </p>
@@ -274,7 +314,7 @@
         </div>
         <hr class="border-secondary my-4">
         <div class="text-center small">
-          &copy; 2025 Tienda Deportiva. Todos los derechos reservados.
+          &copy; 2025 ALI Sports. Todos los derechos reservados.
         </div>
       </div>
     </footer>
