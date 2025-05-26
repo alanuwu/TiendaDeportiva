@@ -32,7 +32,7 @@
             <li class="nav-item"><a class="nav-link active" href="index.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="php/hombre.php">Hombres</a></li>
             <li class="nav-item"><a class="nav-link" href="php/mujer.php">Mujeres</a></li>
-            <li class="nav-item"><a class="nav-link" href="php/ninos.php">Niños</a></li>
+            <li class="nav-item"><a class="nav-link" href="php/niño.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="php/marcas.php">Marcas</a></li>
           </ul>
           <div class="d-flex gap-3" id="userNavArea">
