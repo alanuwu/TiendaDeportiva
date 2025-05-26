@@ -44,7 +44,6 @@ $resultado = $conn->query($sql);
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
           </ul>
           <div class="d-flex gap-3" id="userNavArea">
-            <!-- Aquí se insertará dinámicamente el icono o el botón -->
           </div>
         </div>
       </div>
@@ -188,7 +187,7 @@ while ($row = $resultado->fetch_assoc()) {
       </div>
       <div class="modal-body">
         <div id="cartContent">
-          <!-- Aquí se mostrarán los productos del carrito -->
+          
         </div>
       </div>
     </div>

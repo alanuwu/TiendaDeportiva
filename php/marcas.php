@@ -45,7 +45,7 @@ $marca = isset($_GET['marca']) ? intval($_GET['marca']) : (count($marcas) ? arra
             <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="hombre.php">Hombres</a></li>
             <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
-            <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
+            <li class="nav-item"><a class="nav-link" href="niños.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link active" href="marcas.php">Marcas</a></li>
           </ul>
           <div class="d-flex gap-3" id="userNavArea">
