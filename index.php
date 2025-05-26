@@ -23,7 +23,7 @@
     <!-- Barra de navegación Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="index.php">Tienda<span>Deportiva</span></a>
+        <a class="navbar-brand fw-bold" href="index.php">ALI<span>Sports</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -86,9 +86,72 @@
       </button>
     </div>
 
+ <!-- Galería de Productos Destacados -->
+<?php include "php/cardsProductosInicio.php" ?>
+  
+   
+       <section class="w-100 my-5" style="padding:0;">
+      <div class="container-fluid px-0">
+        <div class="row g-0">
+          <div class="col-12">
+            <div class="ofertas-banner text-center position-relative" style="width:100%;overflow:hidden;">
+              <img src="https://static.vecteezy.com/system/resources/previews/047/918/081/non_2x/sports-background-international-sports-day-illustration-graphic-design-for-the-decoration-of-posters-banners-and-flyer-vector.jpg" 
+                   alt="Ofertas Próximamente" 
+                   style="width:100%;max-height:340px;object-fit:cover;filter:brightness(0.7);">
+              <div class="position-absolute top-50 start-50 translate-middle text-white" style="z-index:2;">
+                <h1 class="display-4 fw-bold">¡Ofertas Próximamente!</h1>
+                <p class="lead">Prepara tu carrito para los mejores descuentos en ALI Sports</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
 
-    <!-- Productos destacados -->
-       <?php include "php/cardsProductos.php" ?>
+     <!-- Sección de Bienestar -->
+    <section class="container-fluid my-5">
+      <div class="row g-0">
+        <div class="col-12">
+          <h2 class="text-center fw-bold mb-4">En ALI Sports nos preocupamos por tu bienestar</h2>
+          <p class="text-center mb-5 text-secondary fs-5">Encuentra productos de calidad, comodidad y estilo para que disfrutes cada momento de tu vida activa.</p>
+        </div>
+        <!-- Primera fila de imágenes -->
+        <div class="col-12 col-md-6 p-2"> 
+          <div class="position-relative h-100">
+            <img src="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2022/01/24/16430403743933.jpg" alt="Bienestar 1" class="w-100 rounded-4 shadow" style="height:320px;object-fit:cover;">
+            <div class="position-absolute bottom-0 start-0 p-3 text-white fw-bold" style="background:rgba(0,0,0,0.35);border-radius:0 0 1rem 1rem;">
+              Vive saludable
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <div class="position-relative h-100">
+            <img src="https://www.gob.mx/cms/uploads/article/main_image/79587/DEPORTE.jpg" alt="Bienestar 2" class="w-100 rounded-4 shadow" style="height:320px;object-fit:cover;">
+            <div class="position-absolute bottom-0 start-0 p-3 text-white fw-bold" style="background:rgba(0,0,0,0.35);border-radius:0 0 1rem 1rem;">
+              Disfruta el deporte
+            </div>
+          </div>
+        </div>
+        <!-- Segunda fila de imágenes -->
+        <div class="col-12 col-md-6 p-2">
+          <div class="position-relative h-100">
+            <img src="https://www.herbalife.com/assets/regional-reusable-assets/amer/samcam/sam/images/A%20moverse!%20El%20deporte%20contribuye%20a%20mejorar%20la%20calidad%20de%20vida.jpg" alt="Bienestar 3" class="w-100 rounded-4 shadow" style="height:320px;object-fit:cover;">
+            <div class="position-absolute bottom-0 start-0 p-3 text-white fw-bold" style="background:rgba(0,0,0,0.35);border-radius:0 0 1rem 1rem;">
+              Calidad y confort
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <div class="position-relative h-100">
+            <img src="https://sportcity.com.mx/wp-content/uploads/2023/03/sport-city-familia-1024x700.jpg" alt="Bienestar 4" class="w-100 rounded-4 shadow" style="height:320px;object-fit:cover;">
+            <div class="position-absolute bottom-0 start-0 p-3 text-white fw-bold" style="background:rgba(0,0,0,0.35);border-radius:0 0 1rem 1rem;">
+              Para toda la familia
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Sección de Marcas -->
     <section class="container mb-5">
@@ -109,9 +172,9 @@
       </div>
     </section>
 
-  
+   
 
-<!-- Modal de Login Bootstrap -->
+    <!-- Modal de Login Bootstrap -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 shadow">
