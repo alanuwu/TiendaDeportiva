@@ -146,7 +146,7 @@ while ($row = $resultado->fetch_assoc()) {
       <div class="container">
         <div class="row gy-4">
           <div class="col-12 col-md-4 text-center text-md-start">
-            <a class="navbar-brand fw-bold text-white mb-2 d-inline-block" href="#" style="font-size:1.5rem;">Tienda<span style="color:#0d6efd;">Deportiva</span></a>
+            <a class="navbar-brand fw-bold text-white mb-2 d-inline-block" href="#" style="font-size:1.5rem;">ALI<span style="color:#0d6efd;">Sports</span></a>
             <p class="small mt-2 mb-0">
               Tu tienda de confianza para ropa, calzado y accesorios deportivos de las mejores marcas.
             </p>
@@ -154,7 +154,7 @@ while ($row = $resultado->fetch_assoc()) {
           <div class="col-12 col-md-4 text-center">
             <h6 class="fw-bold mb-3">Contacto</h6>
             <ul class="list-unstyled mb-0">
-              <li><i class="fa-solid fa-envelope me-2"></i> contacto@tiendadeportiva.com</li>
+              <li><i class="fa-solid fa-envelope me-2"></i> contacto@alisports.com</li>
               <li><i class="fa-solid fa-phone me-2"></i> +52 55 1234 5678</li>
               <li><i class="fa-solid fa-location-dot me-2"></i> Queretaro, México</li>
             </ul>
@@ -165,7 +165,7 @@ while ($row = $resultado->fetch_assoc()) {
             </div>
           </div>
           <div class="col-12 col-md-4 text-center text-md-end">
-            <small>© 2025 Tienda Deportiva. Todos los derechos reservados.</small>
+            <small>© 2025 ALI Sports. Todos los derechos reservados.</small>
           </div>
         </div>
       </div>
