@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="hombre.php">Hombres</a></li>
             <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
-            <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
+            <li class="nav-item"><a class="nav-link" href="niño.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
             <li class="nav-item"><a class="nav-link active" href="pago.php">Detalles del pago</a></li>
           </ul>

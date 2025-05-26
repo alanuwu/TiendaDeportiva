@@ -115,7 +115,7 @@ while ($row = $res_resenas->fetch_assoc()) {
             <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="hombre.php">Hombres</a></li>
             <li class="nav-item"><a class="nav-link" href="mujer.php">Mujeres</a></li>
-            <li class="nav-item"><a class="nav-link" href="ninos.php">Niños</a></li>
+            <li class="nav-item"><a class="nav-link" href="niño.php">Niños</a></li>
             <li class="nav-item"><a class="nav-link" href="marcas.php">Marcas</a></li>
           </ul>
          <div class="d-flex gap-3" id="userNavArea">
