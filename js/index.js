@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li class="list-group-item"><strong>Numero Telefonico:</strong> ${usuario.telefono ?? ''}</li>
         </ul>
         <div class="mt-3 text-end">
-          <button type="button" class="btn btn-submit btn-ver-pedidos">Mis Pedidos</button>
+          <button type="button" class="btn btn-success btn-ver-pedidos">Mis Pedidos</button>
           <button type="button" class="btn btn-danger btn-cerrar-sesion">Cerrar Sesión</button>
         </div>
       `;
