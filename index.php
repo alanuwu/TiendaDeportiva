@@ -43,7 +43,7 @@
       </div>
     </nav>
 
-    <!-- Carrusel Bootstrap -->
+    <!-- Carousel -->
     <div id="mainCarousel" class="carousel slide mt-4 mb-5" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -52,27 +52,28 @@
       </div>
       <div class="carousel-inner rounded-4 shadow">
         <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80" class="d-block w-100" alt="Producto 1" style="height:340px;object-fit:cover;">
+          <a href="http://localhost/TiendaDeportiva/php/detalle.php?id=1"><img src="https://cdn1.coppel.com/images/catalog/pr/8635372-1.jpg" 
+            class="d-block w-100" alt="Producto 1" style="height:340px;object-fit:cover;" /> </a>
           <div class="carousel-caption d-none d-md-block p-4">
             <h2 class="fw-bold">Nuevos Tenis Nike</h2>
             <p>Descubre la nueva colección para correr</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://b2cimpulsmx.vtexassets.com/arquivos/ids/358759-800-800?v=638709166850700000&width=900&height=340&aspect=true" class="d-block w-100" alt="Producto 2" style="height:340px;object-fit:cover;">
+          <a href="http://localhost/TiendaDeportiva/php/detalle.php?id=17"><img src="https://m.media-amazon.com/images/I/81vWWEcaHdL._AC_UF894,1000_QL80_.jpg"
+            class="d-block w-100" alt="Producto 2" style="height:340px;object-fit:none;" /> </a>
           <div class="carousel-caption d-none d-md-block p-4">
             <h2 class="fw-bold">Ropa Deportiva Mujer</h2>
             <p>Estilo y comodidad para entrenar</p>
           </div>
         </div>
-        
         <div class="carousel-item">
-          <img src="https://img.freepik.com/foto-gratis/arreglo-deportivo-naturaleza-muerta_23-2149006363.jpg?semt=ais_hybrid&w=740" class="d-block w-100" alt="Producto 3" style="height:340px;object-fit:cover;">
+          <a href="http://localhost/TiendaDeportiva/php/detalle.php?id=2"><img src="https://m.media-amazon.com/images/I/81Mqt9HikiL.jpg" 
+            class="d-block w-100" alt="Producto 3" style="height:340px;object-fit:none;" /> </a>
           <div class="carousel-caption d-none d-md-block p-4">
             <h2 class="fw-bold">Accesorios Exclusivos</h2>
             <p>Todo lo que necesitas para tu deporte favorito</p>
           </div>
-          
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
@@ -84,6 +85,7 @@
         <span class="visually-hidden">Siguiente</span>
       </button>
     </div>
+
 
     <!-- Productos destacados -->
        <?php include "php/cardsProductos.php" ?>
